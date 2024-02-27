@@ -104,31 +104,30 @@ def grille_complete(grille):
 def jouer_morpion():
     grille_jeu = creer_grille()
     jeu_fini = False
-    recommencer = False
     while not jeu_fini:
         verfication_erreur = False
-        while verfication_erreur != True: #verifie que la case n'est pas déja utliser ou qu'il sorte du morpion 
-                x = int(input("Ligne (1-3): "))
-                y = int(input("Colonne (1-3): "))
-                if x <= 3 and y <= 3:
-                    if grille_jeu[x - 1][y - 1] == "-":
+        # verifie que la case n'est pas déja utliser ou qu'il sorte du morpion
+        while not verfication_erreur:
+            x = int(input("Ligne (1-3): "))
+            y = int(input("Colonne (1-3): "))
+            if x <= 3 and y <= 3:
+                if grille_jeu[x - 1][y - 1] == "-":
 
-                        print("plus de 3")
-                        grille_jeu[x - 1][y - 1] = "X"
-                        jeu_fini = condition_victoire(grille_jeu)
-                        for ligne in grille_jeu:
-                            print(" ".join(ligne))
-                        verfication_erreur = True
-                    else:
-                        print("case utilisée")
+                    print("plus de 3")
+                    grille_jeu[x - 1][y - 1] = "X"
+                    jeu_fini = condition_victoire(grille_jeu)
+                    for ligne in grille_jeu:
+                        print(" ".join(ligne))
+                    verfication_erreur = True
                 else:
-                    print("erreur")
+                    print("case utilisée")
+            else:
+                print("erreur")
 
-        if jeu_fini == True:
+        if jeu_fini:
             print("Le jeu est fini")
             break
         jeu_fini = grille_complete(grille_jeu)
-        verfication_erreur = False
 
         if not jeu_fini:
             verfication_erreur = False
