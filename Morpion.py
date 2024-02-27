@@ -26,6 +26,13 @@ def condition_victoire(grille):
 
 def jouer_bot(grille):
     # Le bot essaie de gagner ou de bloquer l'adversaire
+    choix=random.randint(1,5)
+    #fait un coup aléatoire si choix tombe sur 1
+    if choix==1:
+        print("coup random")
+        x = random.randint(0, 2)
+        y = random.randint(0, 2)
+        return x, y
     for i in range(3):
         if "O" == grille[i][0] == grille[i][1] != "-" and grille[i][2] == "-":
             return i, 2
